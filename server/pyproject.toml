@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quick-commerce-scrapper"
+version = "0.1.0"
+description = "fastapi-Project-Engine"
+authors = [
+    {name = "Sourabh Mishra",email = "sourabhmishra1262@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12.0"
+
+dependencies = [
+    "fastapi (>=0.115.12,<0.116.0)",
+    "gunicorn>=23.0.0",
+    "uvicorn[standard] (>=0.34.2,<0.35.0)",
+    "selenium>=4.18.0",
+    "webdriver-manager>=4.0.1",
+    "python-dotenv>=1.0.0",
+    "aiohttp>=3.8.0",
+    "sqlalchemy>=1.4.0",
+    "psycopg2-binary>=2.9.9",
+    "pyinstaller>=6.3.0",
+    "jinja2>=3.1.2",
+    "aiofiles>=23.2.1",
+    "python-multipart>=0.0.6",
+    "PyJWT>=2.8.0",
+    "alembic>=1.13.1",
+    "requests>=2.31.0",
+    "pymongo>=4.6.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=5.1.0",
+    "pydantic>=2.6.0"
+]
+
+[tool.setuptools]
+packages = ["app"]
+package-dir = {"" = "."}
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.3.0",
+    "mypy>=1.8.0",
+    "pytest-cov>=4.1.0",
+    "httpx>=0.27.0",
+    "pytest-asyncio>=0.23.0",
+]
+
+[project.scripts]
+dev = "scripts.dev_server:main"
+prod = "scripts.prod_server:main"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+select = ["E", "F", "I", "B", "C4", "UP", "N", "RUF"]
+ignore = []
+
+[tool.ruff.isort]
+known-first-party = ["app"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
